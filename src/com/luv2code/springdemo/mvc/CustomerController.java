@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/customer")
 public class CustomerController {
 
-	//add an initbinder ...to convert trim
+	//add an initbinder ...pour supprimer les espaces avant et après le mot
 	//! SUPPRIMER LES ESPACES ET CONVERTIR EN NULL!!!!!
-	//-------------------------------------------------
 	
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -48,9 +47,10 @@ public class CustomerController {
 //		} else {
 //		
 //		return "customer-confirmation";}
+		//Permet de voir le nom de l'erreur à modifier avec le fichier message.properties
+		System.out.println("Binding result : "+theBindingResult);
 		
 		//Autre manière de faire
-		System.out.println("In CustomerController, processForm:|"+theCustomer.getLastName()+"|");
 		return theBindingResult.hasErrors() ?  "customer-form" : "customer-confirmation";
 		
 	}
