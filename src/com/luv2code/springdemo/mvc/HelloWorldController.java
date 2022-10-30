@@ -7,11 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+//Créer un chemin parent
 @Controller
+@RequestMapping("/hello") 
 public class HelloWorldController {
 
 	// need a controller method to show initial form
-	
+	//Créer des chemins enfants	
 	@RequestMapping("/showForm")
 	public String showForm() {
 		return "helloworld-form";
@@ -44,12 +46,10 @@ public class HelloWorldController {
 	}
 	
 	@RequestMapping("/processFormVersionThree")
-	public String processFormVersionThree(
-			@RequestParam("studentName") String theName, Model model) {
-		
+	public String processFormVersionThree(@RequestParam("studentName") 
+	String theName, Model model) {	
 		//create the message
 		String result = "Hey My Friend from v3 ! " + theName.toUpperCase();
-		
 		// add message to the model 
 		model.addAttribute("message", result);
 		
